@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Babysitter Sign Up | Child Care System</title>
+	<link rel="stylesheet" type="text/css" href="../css/babysiterSignupStyle.css">
+	<link href="https://fonts.googleapis.com/css?family=Flamenco&display=swap" rel="stylesheet">
+</head>
+<body>
+	<script>function myfun(){
+		
+		var a = document.getElementById("phnNumber").value;
+		var email_id = document.getElementById("userid").value;
+	
+		if(email_id.indexOf('@')<=0){
+		  document.getElementById("email_message").innerHTML = "** invalid @ position";
+		  alert("Please Enter a Valid Email ID");
+		  return false;
+	
+		}
+		if((email_id.charAt(email_id.length - 4) != '.') && (email_id.charAt(email_id.length - 3) != '.')){
+		  document.getElementById("email_message").innerHTML = "** invalid . position";
+		  alert("Please Enter a Valid Email ID");
+		  return false;
+		}
+	
+		if(a==""){      
+		  document.getElementById("messages").innerHTML = "** Please fill Mobile Number";
+		  alert("Mobile Number is empty");
+		}
+		if(isNaN(a)){
+		  document.getElementById("messages").innerHTML = "** Only Numeric value allowed";
+		  alert("Only numbers are allowed");
+		  return false;
+		}
+		if(a.length<10 || a.length > 10){
+		  document.getElementById("messages").innerHTML = "** Mobile number must be 10 digits";
+		  alert("Mobile number must be 10 digits");
+		  return false;
+		}
+		if((a.charAt(0) != 9) && (a.charAt(0)!=8) && (a.charAt(0)!=7)){
+		  document.getElementById("messages").innerHTML = "** Mobile number must begins with 9, 8, 7";
+		  alert("mobile number must begins with 9, 8, 7");
+		  return false;
+		}
+	
+	  }
+	  </script>
+	<div class="row clearfix">
+		<img src="../img/logo1.png" class="logo" id="logo">
+			<ul class="main-nav">
+				<li><a href="index.html">HOME</a></li>
+				<li><a href="about.html">ABOUT</a></li>
+				<li><a href="services.html">SERVICES</a></li>
+				<li><a class="signup" href="signup.html">SIGN UP</a></li>
+			</ul>
+	</div>
+
+	<form onSubmit = "return myfun()"  action="../php/babysitterSignup.php" method="post">
+		<div class="signup-box signup-box-back">
+			<h1>Sign Up</h1>
+			<div class="textbox">
+				<i class="fas fa-user"></i>
+				<input type="text" placeholder="Enter First Name" name="fname" id="fname" required>
+			</div>
+			<div class="textbox">
+				<i class="fas fa-user"></i>
+				<input type="text" placeholder="Enter Last Name" name="lname" id="lname">
+			</div>
+			<div class="textbox">
+				<i class="fas fa-address-card"></i>
+				<input type="text" placeholder="Enter Postal Code" name="post" id="post" required>
+			</div>
+			<div class="textbox">
+				<i class="fas fa-map-marked-alt"></i>
+				<input type="text" placeholder="Enter Your Address" name="area" id="area" required>
+			</div>
+			<div class="textbox">
+				<i class="fas fa-university"></i>
+				<input type="text" placeholder="Enter Your Bank Account Name" name="bank" id="bank" required>
+			</div>
+			<div class="textbox">
+				<i class="fas fa-wallet"></i>
+				<input type="number" placeholder="Enter Your Bank Account Number" name="account" id="account" required>
+			</div>
+			<div class="textbox">
+				<i class="fas fa-comment-dollar"></i>
+				<input type="number" placeholder="Enter Expected Salary" name="salary" id="salary"  required>
+			</div>
+
+			<div class="textbox">
+				<i class="fas fa-phone-alt"></i>
+				<input type="number" placeholder="Enter Your Phone Number" name="phnNumber" id="phnNumber" required>
+			</div>
+			<div class="textbox">
+				<i class="fas fa-at"></i>
+				<input type="email" placeholder="Enter Email id" name="userid" id="userid" required>
+			</div>
+			<div class="textbox">
+				<i class="fas fa-lock"></i>
+				<input type="password" placeholder="Enter Password" name="password" id="password" required>
+			</div>
+			<!-- <div class="textbox">
+				<i class="fas fa-unlock-alt"></i>
+				<input type="password" placeholder="re-type password" name="repassword" id="repassword">
+			</div> -->
+			<div class="radiobox">
+				<input type="radio" name="gender" id="gender" value="Male" checked> Male<br>
+	  			<input type="radio" name="gender" id="gender" value="Female"> Female<br>
+	  			<input type="radio" name="gender" id="gender" value="Other"> Other<br><br>
+  			</div>
+			  <label for="messages" id="messages" style="color: red"></label>
+			  <label for="email_message" id="email_message" style="color: red"></label>
+			<input class="btn" type="submit" name="signupBtn" id="signupBtn" value="Sign up">
+			
+		</div>
+			
+	</form>
+</body>
+</html>
